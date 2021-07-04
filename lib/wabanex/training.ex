@@ -5,7 +5,7 @@ defmodule Wabanex.Training do
   alias Wabanex.{Exercise, User}
 
   @primary_key {:id, :binary_id, autogenerate: true}
-  @foreing_key_type :binary_id
+  @foreign_key_type :binary_id
 
   @fields [:end_date, :start_date, :user_id]
 

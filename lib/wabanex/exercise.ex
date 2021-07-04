@@ -5,7 +5,7 @@ defmodule Wabanex.Exercise do
   alias Wabanex.Training
 
   @primary_key {:id, :binary_id, autogenerate: true}
-  @foreing_key_type :binary_id
+  @foreign_key_type :binary_id
 
   @fields [:name, :protocol_description, :repetitions, :youtube_video_url]
 
@@ -17,7 +17,6 @@ defmodule Wabanex.Exercise do
 
     belongs_to :training, Training
 
-
     timestamps()
   end
 
@@ -25,6 +24,5 @@ defmodule Wabanex.Exercise do
     exercise
     |> cast(params, @fields)
     |> validate_required(@fields)
-
   end
 end
