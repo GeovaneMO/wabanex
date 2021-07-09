@@ -3,6 +3,7 @@ defmodule WabanexWeb.Schema.Types.Root do
 
   alias Crudry.Middlewares.TranslateErrors
 
+
   alias WabanexWeb.Schema.Types
   alias WabanexWeb.Resolvers
 

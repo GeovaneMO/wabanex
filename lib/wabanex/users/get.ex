@@ -1,11 +1,11 @@
 defmodule Wabanex.Users.Get do
   import Ecto.Query
   alias Ecto.UUID
-  alias Wabanex.{Repo, User}
+  alias Wabanex.{Repo, Training,User}
 
   def call(id) do
     id
-    |>Ecto.UUID.cast()
+    |>UUID.cast()
     |>handle_response()
   end
 
@@ -23,6 +23,10 @@ defmodule Wabanex.Users.Get do
   defp load_training(user) do
     today = Date.utc_today()
 
-    query = from training in Training, where: ^today >= training.start_date and ^today <= training.end_date
-  end
+    query = from training in Training,
+     where: ^today >= training.start_date and ^today <= training.end_date
+
+
+     Repo.preload(user, trainings: {first(query, :inserted_at), :exercises})
+    end
 end
